@@ -1,0 +1,13 @@
+﻿@page
+@model FirstRazorApp.Pages.Employeers.EmpCountModel
+@{
+    ViewData["Title"] = "EmpCount";
+}
+
+<h1>All departments head count</h1>
+<h6>Form without parameter</h6>
+<vc:head-count department="@null"></vc:head-count>
+
+<h1>Only IT department head count</h1>
+<h6>Form with parameter</h6>
+@await Component.InvokeAsync("HeadCount", new { department = Dept.It })

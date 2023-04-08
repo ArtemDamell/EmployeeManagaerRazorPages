@@ -1,0 +1,33 @@
+﻿@page
+@model FirstRazorApp.Pages.Employeers.IndexModel
+@{
+    ViewData["Title"] = "Employees";
+    ViewData["ShowButtons"] = true;
+}
+
+<h1 class="text-center">Employees: @Model.Employees.Count()</h1>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success text-center">@TempData["SuccessMessage"]</div>
+}
+
+<form method="get">
+    <div class="input-group">
+        <input class="form-control" asp-for="SearchTerm" />
+        <div class="input-group-append">
+            <button class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+
+    @foreach (var item in Model.Employees)
+    {
+        <div class="col-12 col-sm-6 col-lg-4">
+            <partial name="_DisplayEmployeePartial" model="item" view-data="ViewData" />
+        </div>
+    }
+
+</div>
+
